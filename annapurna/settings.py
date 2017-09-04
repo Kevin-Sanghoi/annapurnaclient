@@ -28,7 +28,7 @@ SECRET_KEY = '75e7(0yg5a(r6+&@ko4v5(tj-gg*tt=p5^fih6-xbm0(3vq+w3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['annapurnaclient.herokuapp.com']
 
 
 # Application definition
