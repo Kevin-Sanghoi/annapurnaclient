@@ -4,10 +4,10 @@
 	function getfarmersdetails(){
 		console.log('send request');
 		$.ajax({
-    url : "https://annapurnaserver.herokuapp.com/restapi/farmerdetail/",
+    url : "10.0.3.23/restapi/farmerdetail/",
     type: "POST",
 	dataType: 'json',
-    data : { 'username' : 'Rajpal Yadav', "csrfmiddlewaretoken": '{{ csrf_token }}' },
+    data : { 'username' : 'Avenash', "csrfmiddlewaretoken": '{{ csrf_token }}' },
     success: function(data)
     {
         //data - response from server
@@ -18,7 +18,7 @@
 	}
 	
 </script>
-<h1>Welcome , You have done a good job.</h1>
+<h1>Famer Data in JSON format</h1>
 
-<button onclick="getfarmersdetails()">Click here to get farmers details.</button>
+<button onclick="getfarmersdetails()">Famer's data</button>
 <div id='request'></div>
