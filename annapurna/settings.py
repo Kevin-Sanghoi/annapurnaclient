@@ -28,7 +28,7 @@ SECRET_KEY = '75e7(0yg5a(r6+&@ko4v5(tj-gg*tt=p5^fih6-xbm0(3vq+w3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.0.3.23']
+ALLOWED_HOSTS = ['10.0.3.23','127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     
 ]
 

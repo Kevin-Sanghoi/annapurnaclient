@@ -3,5 +3,9 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^index', views.index, name='index'),
+    url(r'^maps', views.index1, name='index1'),
+    url(r'^well', views.well, name='well'),
+    url(r'^household', views.household, name='household'),
+    url(r'^farms', views.farms, name='farms'),
 ]
