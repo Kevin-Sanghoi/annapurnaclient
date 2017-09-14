@@ -1,13 +1,15 @@
 {% load static %}
 <script type="text/javascript" src ="https://maps.googleapis.com/maps/api/js" ></script>
-<script type="text/javascript" src="{% static 'index/gmaps.js' %}"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/gmaps.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 
 <script>
-    function getfarmsdetails(){
+	function getmapdetails(){
 		console.log('send request');
 		$.ajax({
-    url : "http://10.0.3.23:8028/mapsapp/farmsdetail/",
+    url : "http://10.0.3.23:8017/restapi/mapdetail/",
     type: "POST",
 	dataType: 'json',
     data : { 'username' : 'Ramesh Pal', "csrfmiddlewaretoken": '{{ csrf_token }}' },
@@ -15,7 +17,7 @@
     {
         //data - response from server
 	        
-	        var obj = JSON.parse(data.farms_detail);
+	        var obj = JSON.parse(data.farmer_detail);
 	    	console.log('Hello '+ obj);
 	    	
 	    	//var filter=JSON.parse(obj);
@@ -31,8 +33,8 @@
 					click: function(e){
 					  console.log(e);
 					}
-                    });
-                    for (var i = 0, len = obj.features.length; i < len; ++i) {
+					});
+	        for (var i = 0, len = obj.features.length; i < len; ++i) {
      			var loc =obj.features[i].geometry.coordinates ;
 			for (var j = 0, leng = loc.length; j < leng; ++j) {
      			  var lat=loc[j];
@@ -50,9 +52,10 @@
 						  strokeWeight: 3,
 						  fillColor: '#BBD8E9',
 						  fillOpacity: 0.6
-                        });
-                        
-                        console.log(loc[j]);
+						});
+			
+				
+			console.log(loc[j]);
 				console.log('lat'+ lat[0]);
 				console.log('lon'+ lat[1]);
 				
@@ -75,62 +78,54 @@
 			console.log(loc);
  		}
 		console.log(data);
-        $('#request').html(data.farms_detail);
+		$('#request').html(data.farmer_detail);
     }
-});
-    }
-
-/*var t = null;
-function getfarmsdetails(){
-        
-		console.log('send request');
-		$.ajax({
-//    url : "http://10.0.3.23:8028/restapi/farmerdetail/",
-    url : "http://127.0.0.1:8000/mapsapp/farmsdetail/",
-    type: "POST",
-	dataType: 'json',
-    data : { 'username' : 'Avenash', "csrfmiddlewaretoken": '{{ csrf_token }}' },
-    success: function(data)
-    {
-        //data - response from server
-		console.log(data);
-        $('#request').html(data.farms_detail);
-        var t=JSON.parse(data.farms_detail);
-        console.log();
-        var path = t.features[0].geometry.coordinates;
-        console.log(path);
-        for 
-        var map = new GMaps({
-        el: '#map',
-        lat: 15.660689989254122,
-        lng: 78.73083560563029,
-        
-        });
-
-        polygon = map.drawPolygon({
-        paths: path, // pre-defined polygon shape
-        strokeColor: '#BBD8E9',
-        strokeOpacity: 1,
-        strokeWeight: 3,
-        fillColor: '#BBD8E9',
-        fillOpacity: 0.6
-        });
-    }
-});
-    }
-    
-
-    */
-/*/script>
-<h1>Farm Data in JSON format</h1>
-<button onclick="getfarmsdetails()">Farm's data</button>
-
-<div id='request'></div>
-<div id = "map" style= "width :800px;height: 400px;" >
-</div>*/
+});	
+	}
+	
+</script>
 <h1>CLick to Get Map!</h1>
 
-<button onclick="getfarmsdetails()">Click here to get farms details.</button>
+<button onclick="getmapdetails()">Click here to get farmers details.</button>
 <div id='request'></div>
 <div id = "map" style= "width :900px;height: 900px;" >
 </div>
+
+<script>
+// var t = null;
+// function gethouseholddetails(){
+// 		console.log('send request');
+// 		$.ajax({
+// //    url : "http://10.0.3.23:8028/restapi/landlorddetail/",
+//     url : "http://127.0.0.1:8000/mapsapp/householddetail/",
+//     type: "POST",
+// 	dataType: 'json',
+//     data : { 'username' : 'Avenash', "csrfmiddlewaretoken": '{{ csrf_token }}' },
+//     success: function(data)
+//     {
+//         //data - response from server
+//         console.log(data);
+//         t = JSON.parse(data.household_detail);
+//         $('#request').html(data.household_detail);
+//         var map = new GMaps({
+//         el: '#map',
+//         lat: t.features[0].geometry.coordinates[1],
+//         lng: t.features[0].geometry.coordinates[0],
+        
+//         });
+//         map.addMarker({
+//         lat: t.features[0].geometry.coordinates[1],
+//         lng: t.features[0].geometry.coordinates[0],
+//         title: 'Lima',
+//         click: function(e) {
+//             alert('You clicked in this marker');
+//         }
+//         });
+//     }
+// });	
+// }
+    
+ </script>
+<!-- <h1>Household Data in JSON format</h1>
+// <button onclick="gethouseholddetails()">Household's data</button>
+// <div id='request'></div> -->
