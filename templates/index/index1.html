@@ -7,7 +7,7 @@
 		console.log('send request');
 		$.ajax({
 //    url : "http://10.0.3.23:8028/restapi/farmerdetail/",
-    url : "http://10.0.3.23:8028/mapsapp/farmsdetail/",
+    url : "http://10.0.3.23:6028/mapsapp/farmsdetail/",
     type: "POST",
 	dataType: 'json',
     data : { 'username' : 'Avenash', "csrfmiddlewaretoken": '{{ csrf_token }}' },
