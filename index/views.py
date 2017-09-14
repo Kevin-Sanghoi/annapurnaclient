@@ -21,6 +21,9 @@ def farms(request):
 def household(request):
     	return render(request, 'index/household.html')
 
+def landlord(request):
+    	return render(request, 'index/landlord.html')
+
 #def index1(request):
 #	template = loader.get_template("index/index1.html")
 #	return HttpResponse(template.render())
